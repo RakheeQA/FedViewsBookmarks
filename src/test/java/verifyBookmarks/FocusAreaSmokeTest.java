@@ -105,48 +105,50 @@ public class FocusAreaSmokeTest {
 		wait.until(ExpectedConditions.elementToBeClickable(By.id("select-year_start"))).click();
 
 		// Fetch all years from dropdown
-		//remove List<WebElement> yearOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-		//		By.xpath("//ul[contains(@class,'MuiList-root')]/li")));
+		// remove List<WebElement> yearOptions =
+		// wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+		// By.xpath("//ul[contains(@class,'MuiList-root')]/li")));
 
+		// Wait and capture all year options from the floating list (only once)
+		List<WebElement> yearOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+				By.xpath("//ul[contains(@class,'MuiList-root')]/li[normalize-space()]")));
 
-// Wait and capture all year options from the floating list (only once)
-List<WebElement> yearOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-        By.xpath("//ul[contains(@class,'MuiList-root')]/li[normalize-space()]")));
+		// Extract all year texts into a list first (to avoid
+		// StaleElementReferenceException later)
+		List<String> allYears = new ArrayList<>();
+		for (WebElement yearOption : yearOptions) {
+			String year = yearOption.getText().trim();
+			if (!year.isEmpty()) {
+				allYears.add(year);
+			}
+		}
 
-		// Extract all year texts into a list first (to avoid StaleElementReferenceException later)
-List<String> allYears = new ArrayList<>();
-for (WebElement yearOption : yearOptions) {
-    String year = yearOption.getText().trim();
-    if (!year.isEmpty()) {
-        allYears.add(year);
-    }
-}
+		// Loop through each year
+		for (String year : allYears) {
+			System.out.println("▶️ Running test for year: " + year);
+			try {
+				// Reload the page for a clean state
+				driver.get("https://fedviewsd.connecthr.com/focus-area");
+				Thread.sleep(5000);
 
-// Loop through each year
-for (String year : allYears) {
-    System.out.println("▶️ Running test for year: " + year);
-    try {
-        // Reload the page for a clean state
-        driver.get("https://fedviewsd.connecthr.com/focus-area");
+				// Reopen dropdown after page reload
+				wait.until(ExpectedConditions.elementToBeClickable(By.id("select-year_start"))).click();
 
-        // Reopen dropdown after page reload
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("select-year_start"))).click();
+				// Select the year from the floating list
+				wait.until(ExpectedConditions.elementToBeClickable(
+						By.xpath("//li[normalize-space()='" + year + "']"))).click();
 
-        // Select the year from the floating list
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//li[normalize-space()='" + year + "']"))).click();
+				// Click the "Next" buttons (twice, as per your flow)
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Next']"))).click();
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Next']"))).click();
 
-        // Click the "Next" buttons (twice, as per your flow)
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Next']"))).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='Next']"))).click();
-
-        // Run the actual test for selected year
-        navigatetoFA(year);
-    } catch (Exception e) {
-        test.fail("⚠️ Test failed for year " + year + ": " + e.getMessage());
-        e.printStackTrace();
-    }
-}
+				// Run the actual test for selected year
+				navigatetoFA(year);
+			} catch (Exception e) {
+				test.fail("⚠️ Test failed for year " + year + ": " + e.getMessage());
+				e.printStackTrace();
+			}
+		}
 
 	}
 
