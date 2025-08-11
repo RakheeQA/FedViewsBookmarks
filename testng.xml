@@ -1,8 +1,12 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Focus Area Suite">
-    <test name="Focus Area Test">
-        <classes>
-            <class name="verifyBookmarks.FocusAreaSmokeTest"/>
-        </classes>
-    </test>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="MySuite" parallel="false">
+  <test name="Bookmark Tests">
+    <classes>
+      <class name="verifyBookmarks.ViewAgencyResultsTest"/>
+      <class name="verifyBookmarks.CompareAgencyResultsTest"/>
+      <class name="verifyBookmarks.FocusAreasTest"/>
+      <class name="verifyBookmarks.ViewFEVSTest"/>
+    </classes>
+  </test>
 </suite>

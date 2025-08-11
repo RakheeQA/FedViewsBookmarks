@@ -1,2 +1,5 @@
-verifyBookmarks\ExtentManager.class
-verifyBookmarks\Login.class
+verifyBookmarks\ViewFEVSTest.class
+verifyBookmarks\CompareAgencyResultsTest.class
+verifyBookmarks\BaseTest.class
+verifyBookmarks\FocusAreasTest.class
+verifyBookmarks\ViewAgencyResultsTest.class
