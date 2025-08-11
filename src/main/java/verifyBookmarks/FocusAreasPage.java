@@ -26,4 +26,19 @@ public class FocusAreasPage {
         returnButton.click();
         System.out.println("Returned from Focus Areas.");
     }
+
+    public void navigateToLivePage() {
+        String liveUrl = "https://fedviewsd.connecthr.com/focus-area";
+        driver.get(liveUrl);
+        System.out.println("Navigated to live page: " + liveUrl);
+    }
+
+    // Navigates to the bookmark page (saved snapshot)
+    public void navigateToBookmark() {
+        // String bookmarkUrl =
+        // "https://fedviewsd.connecthr.com/focus-area?bookmark=490";
+        String bookmarkUrl = "https://fedviewsd.connecthr.com/focus-area?bookmark=469";
+        driver.get(bookmarkUrl);
+        System.out.println("Navigated to bookmark page: " + bookmarkUrl);
+    }
 }

@@ -1,6 +1,8 @@
+verifyBookmarks\BookmarkComparator.class
 verifyBookmarks\ViewFEVSPage.class
 verifyBookmarks\ScreenshotUtility.class
 verifyBookmarks\ViewAgencyResultsPage.class
+verifyClearAll\ClearAllPage.class
 verifyBookmarks\CompareAgencyResultsPage.class
 verifyBookmarks\ExtentManager.class
 verifyBookmarks\FocusAreasPage.class

@@ -10,9 +10,10 @@ public class ExtentManager {
     public static ExtentReports getExtentReports() {
         System.out.println("************In Extent Manager Class");
         if (extent == null) {
-            ExtentSparkReporter reporter = new ExtentSparkReporter("test-output/ExtentReportFocusAreas.html");
+            ExtentSparkReporter reporter = new ExtentSparkReporter("test-output/ExtentReportBookmarks.html");
             reporter.config()
-                    .setReportName("Selenium Test Report : FedViews - Agency , Current Survey , Focus Areas Bookmarks");
+                    .setReportName(
+                            "Selenium Test Report : FedViews - Agency , Current Survey , Bookmarks Verification");
             reporter.config().setDocumentTitle("Automation Results");
 
             extent = new ExtentReports();

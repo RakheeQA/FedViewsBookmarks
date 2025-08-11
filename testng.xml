@@ -3,10 +3,15 @@
 <suite name="MySuite" parallel="false">
   <test name="Bookmark Tests">
     <classes>
+      <!-- Bookmark test -->
       <class name="verifyBookmarks.ViewAgencyResultsTest"/>
       <class name="verifyBookmarks.CompareAgencyResultsTest"/>
       <class name="verifyBookmarks.FocusAreasTest"/>
       <class name="verifyBookmarks.ViewFEVSTest"/>
+
+            <!-- New Clear All test -->
+      <class name="verifyClearAll.ClearAllTest"/>
+
     </classes>
   </test>
 </suite>

@@ -2,4 +2,5 @@ verifyBookmarks\ViewFEVSTest.class
 verifyBookmarks\CompareAgencyResultsTest.class
 verifyBookmarks\BaseTest.class
 verifyBookmarks\FocusAreasTest.class
+verifyClearAll\ClearAllTest.class
 verifyBookmarks\ViewAgencyResultsTest.class
